@@ -1,0 +1,15 @@
+Django==1.11.4
+
+# DJANGO
+django-debug-toolbar==1.8
+django-extensions==1.8.1
+djangorestframework==3.6.3
+django-mptt==0.8.7
+django_imagekit==4.0.1
+django-redis==4.8.0
+django-digg-paginator==0.1.3
+
+# необходимо для django_imagekit
+Pillow==4.2.1
+
+# DJANGO END
