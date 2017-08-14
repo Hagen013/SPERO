@@ -1,4 +1,8 @@
 import os
+import environ
+
+env = environ.Env()
+env.read_env()
 
 # PATHS
 # ------------------------------------------------------------------------------
@@ -10,7 +14,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY SETINGS
 # ------------------------------------------------------------------------------
 # TODO защитить
-SECRET_KEY = '!4i$l8*5+76r^ds)4ij712arl)shhx*g@8hsh*uh6u!v*p9(hq'
+SECRET_KEY = env('DJANGO_SECRET_KEY')
 
 # SECURITY SETINGS END
 
