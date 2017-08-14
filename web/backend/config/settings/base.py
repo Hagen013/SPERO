@@ -6,7 +6,7 @@ env.read_env()
 
 # PATHS
 # ------------------------------------------------------------------------------
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ROOT_DIR = environ.Path(__file__) - 4  # (web/backend/config/settings/base.py - 4 = web/)
 
 # PATHS END
 
@@ -77,6 +77,9 @@ TEMPLATES = [
         'DIRS': [
             '../frontend/templates/',
         ],
+        'OPTIONS': {
+            'environment': 'config.jinja2env.environment',
+        }
     },
 ]
 
@@ -116,3 +119,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    str(ROOT_DIR.path('frontend/static')),
+)
