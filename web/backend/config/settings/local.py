@@ -6,10 +6,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
-
 WSGI_APPLICATION = 'config.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
@@ -22,9 +19,8 @@ DATABASES = {
 }
 
 
-INSTALLED_APPS.append('debug_toolbar')
-
-MIDDLEWARE.append('debug_toolbar.middleware.DebugToolbarMiddleware')
+MIDDLEWARE += ('debug_toolbar.middleware.DebugToolbarMiddleware', )
+INSTALLED_APPS += ('debug_toolbar', )
 
 INTERNAL_IPS = ['127.0.0.1']
 
