@@ -1,8 +1,12 @@
 import os
+import environ
+
+env = environ.Env()
+env.read_env()
 
 # PATHS
 # ------------------------------------------------------------------------------
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ROOT_DIR = environ.Path(__file__) - 4  # (web/backend/config/settings/base.py - 4 = web/)
 
 # PATHS END
 
@@ -10,7 +14,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY SETINGS
 # ------------------------------------------------------------------------------
 # TODO защитить
-SECRET_KEY = '!4i$l8*5+76r^ds)4ij712arl)shhx*g@8hsh*uh6u!v*p9(hq'
+SECRET_KEY = env('DJANGO_SECRET_KEY')
 
 # SECURITY SETINGS END
 
@@ -34,6 +38,7 @@ THIRD_PARTY_APPS = [
 ]
 
 LOCAL_APPS = [
+    'demo'
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -72,6 +77,9 @@ TEMPLATES = [
         'DIRS': [
             '../frontend/templates/',
         ],
+        'OPTIONS': {
+            'environment': 'config.jinja2env.environment',
+        }
     },
 ]
 
@@ -98,9 +106,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru-ru'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 
@@ -111,3 +119,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    str(ROOT_DIR.path('frontend/static')),
+)

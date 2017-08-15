@@ -6,10 +6,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
-
 WSGI_APPLICATION = 'config.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
@@ -17,14 +14,13 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': str(ROOT_DIR.path('backend/db.sqlite3')),
     }
 }
 
 
-INSTALLED_APPS.append('debug_toolbar')
-
-MIDDLEWARE.append('debug_toolbar.middleware.DebugToolbarMiddleware')
+MIDDLEWARE += ('debug_toolbar.middleware.DebugToolbarMiddleware', )
+INSTALLED_APPS += ('debug_toolbar', )
 
 INTERNAL_IPS = ['127.0.0.1']
 
