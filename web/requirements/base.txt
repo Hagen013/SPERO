@@ -18,4 +18,4 @@ Pillow==4.2.1
 Jinja2==2.9.6
 
 # django-environ for security issues
-django-environ-0.4.3
+django-environ==0.4.3
